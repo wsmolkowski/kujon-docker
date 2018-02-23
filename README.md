@@ -18,3 +18,5 @@ docker exec -it kujon-demo bash
 
 db.createUser({ user: 'kujon', pwd: 'ZZ2982skhH3sGIms', roles: [ { role: "dbAdmin", db: "demo" } ] });
 
+# login to cloud.canister.io
+docker login --username=kujon cloud.canister.io:5000

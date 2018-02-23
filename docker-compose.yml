@@ -7,7 +7,9 @@ services:
     ports:
       - "80:80"
       - "443:443"
-
+    networks:
+      - frontend
+      
   app:
     image: kujonmobi/server:kujon-demo
     ports:

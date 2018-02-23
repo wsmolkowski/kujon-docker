@@ -3,13 +3,13 @@ version: '3.5'
 services:
 
   nginx:
-    image: kujon/kujon-nginx
+    image: kujonmobi/server:kujon-nginx
     ports:
       - "80:80"
       - "443:443"
 
   app:
-    image: kujon/kujon-demo
+    image: kujonmobi/server:kujon-demo
     ports:
       - "9000:9000"
       - "9002:9002"
@@ -42,31 +42,3 @@ networks:
 
 volumes:
   mongodb:
-
-#  drupal:
-#    ports:
-#      - "80:80"
-#    volumes:
-#      - drupal-modules:/var/www/html/modules
-#      - drupal-profiles:/var/www/html/profiles
-#      - drupal-sites:/var/www/html/sites
-#      - drupal-themes:/var/www/html/themes
-#
-#  postgres:
-#    environment:
-#      - POSTGRES_PASSWORD_FILE=/run/secrets/psql-pw
-#    secrets:
-#      - psql-pw
-#    volumes:
-#      - drupal-data:/var/lib/postgresql/data
-#
-#volumes:
-#  drupal-data:
-#  drupal-modules:
-#  drupal-profiles:
-#  drupal-sites:
-#  drupal-themes:
-#
-#secrets:
-#  psql-pw:
-#    external: true

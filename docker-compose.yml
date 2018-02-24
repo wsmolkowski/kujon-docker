@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   nginx:
-    image: kujon/nginx-0.3
+    image: kujon/nginx-0.1
     ports:
       - "80:80"
       - "443:443"
@@ -18,7 +18,7 @@ services:
       - "9004:8004"
       - "9005:8005"
     environment:
-      - CONFIG=DEMO
+      - CONFIG=demo
     networks:
       - frontend
       - backend
@@ -31,7 +31,7 @@ services:
       - "8004:8004"
       - "8005:8005"
     environment:
-      - CONFIG=PROD
+      - CONFIG=prod
     networks:
       - frontend
       - backend

@@ -27,4 +27,6 @@ RUN chown -R appuser:appuser $HOME
 
 EXPOSE 8000 8002 8004 8005
 
-CMD supervisord -c /etc/supervisor/conf/kujon-{$CONFIG}.conf
+ENV CONFIG $CONFIG
+
+CMD supervisord -c /etc/supervisor/conf.d/kujon-${CONFIG}.conf

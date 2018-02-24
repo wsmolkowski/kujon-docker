@@ -48,7 +48,7 @@ services:
     environment:
       - AUTH=yes
       - MONGODB_ADMIN_USER=admin
-      - MONGODB_ADMIN_PASS=admin123
+      - MONGODB_ADMIN_PASS=admin1239
       - MONGODB_APPLICATION_DATABASE=demo
       - MONGODB_APPLICATION_USER=kujon
       - MONGODB_APPLICATION_PASS=ZZ2982skhH3sGIms

@@ -11,15 +11,31 @@ services:
       - frontend
 
   demo:
-    image: kujon/demo-0.1
+    image: kujon/app-0.1
     ports:
-      - "9000:9000"
-      - "9002:9002"
-      - "9004:9004"
-      - "9005:9005"
+      - "9000:8000"
+      - "9002:8002"
+      - "9004:8004"
+      - "9005:8005"
+    environment:
+      - CONFIG=DEMO
     networks:
       - frontend
       - backend
+
+  prod:
+    image: kujon/app-0.1
+    ports:
+      - "8000:8000"
+      - "8002:8002"
+      - "8004:8004"
+      - "8005:8005"
+    environment:
+      - CONFIG=PROD
+    networks:
+      - frontend
+      - backend
+
 
   mongodb:
     image: mongo:3.6

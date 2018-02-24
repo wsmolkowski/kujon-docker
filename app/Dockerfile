@@ -2,19 +2,18 @@ FROM python:3.6
 
 RUN apt-get update && apt-get install -y git supervisor npm && rm -rf /var/lib/apt/lists/*
 
-RUN adduser --gecos "" --disabled-password --home=/home/demo demo
+RUN adduser --gecos "" --disabled-password --home=/home/appuser appuser
 
-RUN mkdir /home/demo/app
+RUN mkdir /home/appuser/app
 
-ENV HOME /home/demo/app
+ENV HOME /home/appuser/app
 
 WORKDIR $HOME
 
 RUN git clone -b development https://kujonmobi:BVRzgDUt6UynjMUmXgAx@bitbucket.org/kujonmobi/kujon-server.git .
 
-RUN cp config/ssl/* /etc/ssl/
-
-RUN cp config/supervisor/conf.d/kujon-demo.conf /etc/supervisor/conf.d/ && cp config/supervisor/supervisord.conf /etc/supervisor/
+COPY supervisor/kujon-demo.conf /etc/supervisor/conf.d/
+COPY supervisor/kujon-prod.conf /etc/supervisor/conf.d/
 
 RUN pip install -r requirements.txt
 
@@ -24,8 +23,8 @@ WORKDIR $HOME/web/static
 
 RUN bower --allow-root install
 
-RUN chown -R demo:demo $HOME
+RUN chown -R appuser:appuser $HOME
 
-EXPOSE 9000 9002 9004 9005
+EXPOSE 8000 8002 8004 8005
 
-CMD supervisord -c /etc/supervisor/supervisord.conf
+CMD supervisord -c /etc/supervisor/conf/kujon-{$CONFIG}.conf

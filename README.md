@@ -8,15 +8,17 @@ docker container run --publish 9000:9000 --publish 9002:9002 --publish 9004:9004
 
 # how to start image
 
-docker container start kujon-mobi
 
-# how to connect
-
-docker exec -it kujon-demo bash
-
+#mongo create admin
+db.createUser( {
+     user: "admin",
+     pwd: "jfh472837r61HdgFd",
+     roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+   });
 # mongo demo create db
+db.createUser({ user: 'kujprod', pwd: '4567GhdF13Kd', roles: [ { role: "dbAdmin", db: "kuj-prod" } ] });
+db.createUser({ user: 'kujdemo', pwd: 'jsH28s3284sh', roles: [ { role: "dbAdmin", db: "kuj-demo" } ] });
 
-db.createUser({ user: 'kujon', pwd: 'ZZ2982skhH3sGIms', roles: [ { role: "dbAdmin", db: "demo" } ] });
 
 # login to cloud.canister.io
 docker login --username=kujon cloud.canister.io:5000

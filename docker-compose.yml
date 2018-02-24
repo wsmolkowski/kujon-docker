@@ -13,10 +13,10 @@ services:
   demo:
     image: kujon/app-0.1
     ports:
-      - "9000:8000"
-      - "9002:8002"
-      - "9004:8004"
-      - "9005:8005"
+      - "8000:8000"
+      - "8002:8002"
+      - "8004:8004"
+      - "8005:8005"
     environment:
       - CONFIG=demo
     networks:
@@ -47,11 +47,6 @@ services:
       - backend
     environment:
       - AUTH=yes
-      - MONGODB_ADMIN_USER=admin
-      - MONGODB_ADMIN_PASS=admin1239
-      - MONGODB_APPLICATION_DATABASE=demo
-      - MONGODB_APPLICATION_USER=kujon
-      - MONGODB_APPLICATION_PASS=ZZ2982skhH3sGIms
 
 networks:
   frontend:

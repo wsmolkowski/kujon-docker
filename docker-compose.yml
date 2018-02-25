@@ -4,10 +4,6 @@ services:
 
   nginx:
     image: kujon/nginx-0.1
-    build:
-      context: ./nginx
-      args:
-        buildno: 0.1
     ports:
       - "80:80"
       - "443:443"

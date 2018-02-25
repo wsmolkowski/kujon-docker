@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   nginx:
-    image: kujon/nginx-0.1
+    image: kujon/nginx:0.1
     ports:
       - "80:80"
       - "443:443"
@@ -22,7 +22,7 @@ services:
       start_period: 40s
 
   demo:
-    image: kujon/app-0.1
+    image: kujon/app:0.1
     ports:
       - "9000:8000"
       - "9002:8002"
@@ -48,7 +48,7 @@ services:
       start_period: 30s
 
   prod:
-    image: kujon/app-0.1
+    image: kujon/app:0.1
     ports:
       - "8000:8000"
       - "8002:8002"

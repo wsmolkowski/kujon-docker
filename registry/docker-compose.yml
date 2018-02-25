@@ -1,17 +1,18 @@
 version: '3.5'
 
-registry:
-  restart: always
-  image: registry:2
-  ports:
-    - 5000:5000
-  environment:
-    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/kujon.mobi.withintermediate.crt
-    REGISTRY_HTTP_TLS_KEY: /certs/kujon.mobi.key
-    REGISTRY_AUTH: htpasswd
-    REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
-    REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
-  volumes:
-    - /home/registry:/var/lib/registry
-    - /home/doc/kujon-docker/nginx/ssl:/certs
-    - /home/doc/kujon-docker/registry/auth:/auth
+services:
+  registry:
+    restart: always
+    image: registry:2
+    ports:
+      - 5000:5000
+    environment:
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/kujon.mobi.withintermediate.crt
+      REGISTRY_HTTP_TLS_KEY: /certs/kujon.mobi.key
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+    volumes:
+      - /home/registry:/var/lib/registry
+      - /home/doc/kujon-docker/nginx/ssl:/certs
+      - /home/doc/kujon-docker/registry/auth:/auth

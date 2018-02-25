@@ -29,4 +29,6 @@ EXPOSE 8000 8002 8004 8005
 
 ENV CONFIG $CONFIG
 
+WORKDIR $HOME
+
 CMD supervisord -c /etc/supervisor/conf.d/kujon-${CONFIG}.conf

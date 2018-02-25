@@ -9,6 +9,11 @@ services:
       - "443:443"
     networks:
       - frontend
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "20"
 
   demo:
     image: kujon/app-0.1
@@ -22,6 +27,11 @@ services:
     networks:
       - frontend
       - backend
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "5"
 
   prod:
     image: kujon/app-0.1
@@ -35,7 +45,11 @@ services:
     networks:
       - frontend
       - backend
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "40"
 
   mongodb:
     image: mongo:3.6
@@ -47,6 +61,11 @@ services:
       - backend
     environment:
       - AUTH=yes
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "5"
 
 networks:
   frontend:

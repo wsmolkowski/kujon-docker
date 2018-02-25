@@ -24,10 +24,10 @@ services:
   demo:
     image: kujon/app-0.1
     ports:
-      - "8000:8000"
-      - "8002:8002"
-      - "8004:8004"
-      - "8005:8005"
+      - "9000:8000"
+      - "9002:8002"
+      - "9004:8004"
+      - "9005:8005"
     environment:
       - CONFIG=demo
     networks:

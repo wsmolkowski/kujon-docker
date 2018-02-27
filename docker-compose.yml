@@ -14,12 +14,12 @@ services:
       options:
         max-size: "100m"
         max-file: "20"
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "https://localhost"]
-    #   interval: 1m30s
-    #   timeout: 10s
-    #   retries: 3
-    #   start_period: 40s
+    healthcheck:
+      test: ["CMD", "curl", "-f", "https://localhost"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   demo:
     image: r.kujon.mobi/app:0.1
@@ -40,12 +40,12 @@ services:
         max-file: "5"
     depends_on:
       - mongodb
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://localhost:9000/usosesall"]
-    #   interval: 5m30s
-    #   timeout: 3s
-    #   retries: 3
-    #   start_period: 30s
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/usosesall"]
+      interval: 5m30s
+      timeout: 3s
+      retries: 3
+      start_period: 30s
 
   prod:
     image: r.kujon.mobi/app:0.1
@@ -66,12 +66,12 @@ services:
         max-file: "40"
     depends_on:
       - mongodb
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://localhost:8000/usosesall"]
-    #   interval: 1m00s
-    #   timeout: 3s
-    #   retries: 3
-    #   start_period: 30s
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/usosesall"]
+      interval: 1m00s
+      timeout: 3s
+      retries: 3
+      start_period: 30s
 
   mongodb:
     image: mongo:3.6

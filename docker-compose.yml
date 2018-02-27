@@ -42,7 +42,7 @@ services:
       - mongodb
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9000/usosesall"]
-      interval: 5m30s
+      interval: 20s
       timeout: 3s
       retries: 3
       start_period: 30s
@@ -68,7 +68,7 @@ services:
       - mongodb
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/usosesall"]
-      interval: 1m00s
+      interval: 20s
       timeout: 3s
       retries: 3
       start_period: 30s

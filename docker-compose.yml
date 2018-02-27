@@ -93,7 +93,6 @@ services:
         max-file: "5"
     deploy:
         replicas: 1
-        mode: onceperhost
         placement:
           constraints: [node.hostname == d2.kujon.mobi]
 

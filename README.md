@@ -53,7 +53,3 @@ And you should see  Experimental: true
 copy certs to /etc/ssl
 
 Create a password file with one entry for the user doc, with password "test":
-
-    docker run --entrypoint htpasswd registry:2 -Bbn doc test > auth/htpasswd
-
-    docker run -d -p 5000:5000 --restart=always --name registry -v /home/doc/kujon-docker/nginx/ssl:/certs -v /home/doc/kujon-docker/auth:/auth -e "REGISTRY_AUTH=htpasswd" -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"  -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/kujon.mobi.withintermediate.crt -e REGISTRY_HTTP_TLS_KEY=/certs/kujon.mobi.key registry:2

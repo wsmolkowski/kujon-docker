@@ -100,6 +100,13 @@ echo " * allowing ping responses"
 ${IPTABLES} -A INPUT -p ICMP --icmp-type 8 -j ACCEPT
 ${IP6TABLES} -A INPUT -p IPV6-ICMP -j ACCEPT
 
+echo " * allowing docker communication between hosts on ipv4"
+${IPTABLES} -A INPUT -s 195.201.42.17,195.201.40.68,195.201.40.238 -p tcp -m state --state NEW -m tcp --dport 2376 -j ACCEPT
+${IPTABLES} -A INPUT -s 195.201.42.17,195.201.40.68,195.201.40.238 -p tcp -m state --state NEW -m tcp --dport 2377 -j ACCEPT
+${IPTABLES} -A INPUT -s 195.201.42.17,195.201.40.68,195.201.40.238 -p tcp -m state --state NEW -m tcp --dport 7946 -j ACCEPT
+${IPTABLES} -A INPUT -s 195.201.42.17,195.201.40.68,195.201.40.238 -p udp -m state --state NEW -m udp --dport 7946 -j ACCEPT
+${IPTABLES} -A INPUT -s 195.201.42.17,195.201.40.68,195.201.40.238 -p udp -m state --state NEW -m udp --dport 4789 -j ACCEPT
+
 # DROP everything else and Log it
 ${IPTABLES} -A INPUT -j LOG
 ${IPTABLES} -A INPUT -j DROP

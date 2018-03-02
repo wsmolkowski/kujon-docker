@@ -50,6 +50,7 @@ services:
     #   retries: 3
     #   start_period: 30s
 
+
   prod:
     image: r.kujon.mobi/app:0.1
     ports:
@@ -80,7 +81,6 @@ services:
     image: mongo:3.6
     volumes:
       - /home/mongodb:/var/lib/mongodb
-
     ports:
       - 27017:27017
     networks:

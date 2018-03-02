@@ -98,7 +98,7 @@ ${IP6TABLES} -A INPUT -p tcp -m state --state NEW -m tcp --dport 993 -j ACCEPT
 
 echo " * allowing ping responses"
 ${IPTABLES} -A INPUT -p ICMP --icmp-type 8 -j ACCEPT
-${IP6TABLES} -A INPUT -p IPV6-ICMP --icmpv6-type 8 -j ACCEPT
+${IP6TABLES} -A INPUT -p IPV6-ICMP --icmpv6-type echo-request -j ACCEPT
 
 # DROP everything else and Log it
 ${IPTABLES} -A INPUT -j LOG

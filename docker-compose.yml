@@ -26,15 +26,9 @@ services:
 
   demo:
     image: r.kujon.mobi/app:0.1
-    ports:
-      - "9000:8000"
-      - "9002:8002"
-      - "9004:8004"
-      - "9005:8005"
     environment:
       - CONFIG=demo
     networks:
-      - frontend
       - backend
     logging:
       driver: "json-file"
@@ -53,15 +47,9 @@ services:
 
   prod:
     image: r.kujon.mobi/app:0.1
-    ports:
-      - "8000:8000"
-      - "8002:8002"
-      - "8004:8004"
-      - "8005:8005"
     environment:
       - CONFIG=prod
     networks:
-      - frontend
       - backend
     logging:
       driver: "json-file"
@@ -81,8 +69,6 @@ services:
     image: mongo:3.6
     volumes:
       - /home/mongodb:/var/lib/mongodb
-    ports:
-      - 27017:27017
     networks:
       - backend
     environment:

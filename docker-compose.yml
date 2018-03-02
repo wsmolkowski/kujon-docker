@@ -5,8 +5,8 @@ services:
   nginx:
     image: r.kujon.mobi/nginx:0.1
     ports:
-      - "80:80"
-      - "443:443"
+      - 80:80
+      - 443:443
     networks:
       - frontend
     logging:
@@ -26,6 +26,11 @@ services:
 
   demo:
     image: r.kujon.mobi/app:0.1
+    ports:
+      - 127.0.0.1:9000:8000
+      - 127.0.0.1:9002:8002
+      - 127.0.0.1:9004:8004
+      - 127.0.0.1:9005:8005
     environment:
       - CONFIG=demo
     networks:
@@ -47,6 +52,11 @@ services:
 
   prod:
     image: r.kujon.mobi/app:0.1
+    ports:
+      - 127.0.0.1:8000:8000
+      - 127.0.0.1:8002:8002
+      - 127.0.0.1:8004:8004
+      - 127.0.0.1:8005:8005
     environment:
       - CONFIG=prod
     networks:
@@ -69,6 +79,8 @@ services:
     image: mongo:3.6
     volumes:
       - /home/mongodb:/var/lib/mongodb
+    ports:
+      - 127.0.0.1:27017:27017
     networks:
       - backend
     environment:

@@ -32,7 +32,7 @@ services:
       interval: 20s
       timeout: 3s
       retries: 3
-      start_period: 30s
+      start_period: 10s
 
   prod:
     image: r.kujon.mobi/app:0.1
@@ -50,7 +50,7 @@ services:
       interval: 20s
       timeout: 3s
       retries: 3
-      start_period: 30s
+      start_period: 10s
 
   mongodb:
     image: mongo:3.6

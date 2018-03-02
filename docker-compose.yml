@@ -79,9 +79,10 @@ services:
   mongodb:
     image: mongo:3.6
     volumes:
-      - "mongodb:/var/lib/mongodb"
+      - /home/mongodb:/var/lib/mongodb
+
     ports:
-      - "27017:27017"
+      - 27017:27017
     networks:
       - backend
     environment:
@@ -99,6 +100,3 @@ services:
 networks:
   frontend:
   backend:
-
-volumes:
-  mongodb:

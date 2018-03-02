@@ -7,8 +7,8 @@ docker build --build-arg git_username=USERNAME --build-arg git_password=PASS--no
 docker container run --publish 9000:9000 --publish 9002:9002 --publish 9004:9004 --publish 9005:9005 --name kujon-demo kujon/kujon-demo
 
 # how restore mongo
-mongorestore -d kujon-demo kujon-demo
-mongorestore -d kujon-prod mongodb-2018-03-02/kujon-prod
+mongorestore -d kujon-demo kujon-demo/
+mongorestore -d kujon-prod kujon-prod/
 
 #mongo create admin
 mongo admin

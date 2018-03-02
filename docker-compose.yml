@@ -8,19 +8,18 @@ services:
       - 80:80
       - 443:443
     networks:
-      - frontend
-      - backend
+      - frontend #when using frontend and backend nginx can't see prod
     logging:
       driver: "json-file"
       options:
         max-size: "100m"
         max-file: "20"
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "https://localhost"]
-    #   interval: 1m30s
-    #   timeout: 10s
-    #   retries: 3
-    #   start_period: 40s
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/usosesall"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     depends_on:
       - demo
       - prod
@@ -30,7 +29,7 @@ services:
     environment:
       - CONFIG=demo
     networks:
-      - backend
+      - frontend
     logging:
       driver: "json-file"
       options:
@@ -38,19 +37,19 @@ services:
         max-file: "5"
     depends_on:
       - mongodb
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://localhost:8000/usosesall"]
-    #   interval: 20s
-    #   timeout: 3s
-    #   retries: 3
-    #   start_period: 30s
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/usosesall"]
+      interval: 20s
+      timeout: 3s
+      retries: 3
+      start_period: 30s
 
   prod:
     image: r.kujon.mobi/app:0.1
     environment:
       - CONFIG=prod
     networks:
-      - backend
+      - frontend
     logging:
       driver: "json-file"
       options:
@@ -73,7 +72,7 @@ services:
     ports:
       - 127.0.0.1:27017:27017
     networks:
-      - backend
+      - frontend
     environment:
       - AUTH=yes
     logging:
@@ -88,4 +87,3 @@ services:
 
 networks:
   frontend:
-  backend:

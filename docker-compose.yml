@@ -68,7 +68,7 @@ services:
   mongodb:
     image: mongo:3.6
     volumes:
-      - kujon_mongodb:/var/lib/mongodb
+      - mongodb:/var/lib/mongodb
     ports:
       - 127.0.0.1:27017:27017
     networks:
@@ -90,4 +90,4 @@ networks:
   backend:
 
 volumes:
-  kujon_mongodb:
+  mongodb:

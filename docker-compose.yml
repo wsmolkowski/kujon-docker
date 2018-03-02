@@ -68,7 +68,8 @@ services:
   mongodb:
     image: mongo:3.6
     volumes:
-      - mongodb:/var/lib/mongodb
+      - mongodb:/data/db
+      - mongoconfigdb:/data/configdb
     ports:
       - 127.0.0.1:27017:27017
     networks:
@@ -95,4 +96,10 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /home/mongodb
+      device: /home/mongodb/db
+  mongodb:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/mongodb/configdb

@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
 
-  mail:
+  postfix:
     image: tvial/docker-mailserver:latest
     hostname: smtp.kujon.mobi
     domainname: kujon.mobi
@@ -34,6 +34,9 @@ services:
         placement:
           constraints: [node.hostname == d1.kujon.mobi]
     restart: always
+    logging:
+      driver: "syslog"
+      tag: "postfix"
 
   nginx:
     image: r.kujon.mobi/nginx:0.1
@@ -41,10 +44,8 @@ services:
       - 80:80
       - 443:443
     logging:
-      driver: "json-file"
-      options:
-        max-size: "100m"
-        max-file: "20"
+      driver: "syslog"
+      tag: "nginx"
     depends_on:
       - demo
       - prod
@@ -54,10 +55,8 @@ services:
     environment:
       - CONFIG=demo
     logging:
-      driver: "json-file"
-      options:
-        max-size: "100m"
-        max-file: "5"
+      driver: "syslog"
+      tag: "demo"
     depends_on:
       - mongodb
     healthcheck:
@@ -72,10 +71,8 @@ services:
     environment:
       - CONFIG=prod
     logging:
-      driver: "json-file"
-      options:
-        max-size: "100m"
-        max-file: "40"
+      driver: "syslog"
+      tag: "prod"
     depends_on:
       - mongodb
     healthcheck:
@@ -95,10 +92,8 @@ services:
     environment:
       - AUTH=yes
     logging:
-      driver: "json-file"
-      options:
-        max-size: "100m"
-        max-file: "5"
+      driver: "syslog"
+      tag: "mongodb"
     deploy:
         replicas: 1
         placement:

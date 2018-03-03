@@ -13,9 +13,9 @@ services:
     - "587:587"
     - "993:993"
     volumes:
-    - /home/postfix/mail:/var/mail
-    - /home/postfix/mail-state:/var/mail-state
-    - /home/postfix/config:/tmp/docker-mailserver/
+    - maildata:/var/mail
+    - mailstate:/var/mail-state
+    - /home/postfix/config/:/tmp/docker-mailserver/
     environment:
     - ENABLE_SPAMASSASSIN=1
     - ENABLE_CLAMAV=1

@@ -5,7 +5,6 @@ services:
   postfix:
     image: tvial/docker-mailserver:latest
     hostname: smtp.kujon.mobi
-    domainname: kujon.mobi
     ports:
     - "25:25"
     - "143:143"
@@ -26,14 +25,10 @@ services:
     - SSL_TYPE=manual
     - SSL_CERT_PATH=/tmp/ssl/kujon.mobi.cert.2018
     - SSL_KEY_PATH=/tmp/ssl/kujon.mobi.key
-    cap_add:
-    - NET_ADMIN
-    - SYS_PTRACE
     deploy:
         replicas: 1
         placement:
           constraints: [node.hostname == d1.kujon.mobi]
-    restart: always
     logging:
       driver: "syslog"
       options:

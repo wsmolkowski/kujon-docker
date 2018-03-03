@@ -74,9 +74,8 @@ ${IPTABLES} -A INPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
 ${IP6TABLES} -A INPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
 
 echo " * allowing syslog on port 514"
-${IPTABLES} -A INPUT -p tcp -s 195.201.42.17,195.201.40.68 --dport 514 -m state --state NEW -j ACCEPT
-${IP6TABLES} -A INPUT -p tcp -s 195.201.42.17,195.201.40.68 --dport 514 -m state --state NEW -j ACCEPT
-
+${IPTABLES} -A INPUT -s 195.201.42.17,195.201.40.68 -p tcp --dport 514 -m state --state NEW -j ACCEPT
+${IP6TABLES} -A INPUT -s 195.201.42.17,195.201.40.68 -p tcp --dport 514 -m state --state NEW -j ACCEPT
 
 # echo " * allowing smtp on port 25 and 465"
 # ${IPTABLES} -A INPUT -p tcp -m state --state NEW -m tcp --dport 25 -j ACCEPT

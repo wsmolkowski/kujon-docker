@@ -36,6 +36,9 @@ services:
     restart: always
     logging:
       driver: "syslog"
+      options:
+        syslog-address: "tcp://r.kujon.mobi:514"
+
       tag: "postfix"
 
   nginx:
@@ -45,7 +48,8 @@ services:
       - 443:443
     logging:
       driver: "syslog"
-      tag: "nginx"
+      options:
+        syslog-address: "tcp://r.kujon.mobi:514"
     depends_on:
       - demo
       - prod
@@ -72,7 +76,8 @@ services:
       - CONFIG=prod
     logging:
       driver: "syslog"
-      tag: "prod"
+      options:
+        syslog-address: "tcp://r.kujon.mobi:514"
     depends_on:
       - mongodb
     healthcheck:
@@ -93,7 +98,8 @@ services:
       - AUTH=yes
     logging:
       driver: "syslog"
-      tag: "mongodb"
+      options:
+        syslog-address: "tcp://r.kujon.mobi:514"
     deploy:
         replicas: 1
         placement:

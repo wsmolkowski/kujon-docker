@@ -73,9 +73,7 @@ echo " * allowing https on port 443"
 ${IPTABLES} -A INPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
 ${IP6TABLES} -A INPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
 
-echo " * allowing syslog on ports 514"
-${IPTABLES} -A INPUT -s 195.201.42.17,195.201.40.68 -p udp --dport 514 -m state --state NEW -j ACCEPT
-${IP6TABLES} -A INPUT -p udp -s 195.201.42.17,195.201.40.68 --dport 514 -m state --state NEW -j ACCEPT
+echo " * allowing syslog on port 514"
 ${IPTABLES} -A INPUT -p tcp -s 195.201.42.17,195.201.40.68 --dport 514 -m state --state NEW -j ACCEPT
 ${IP6TABLES} -A INPUT -p tcp -s 195.201.42.17,195.201.40.68 --dport 514 -m state --state NEW -j ACCEPT
 

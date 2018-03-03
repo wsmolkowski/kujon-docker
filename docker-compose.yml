@@ -4,7 +4,7 @@ services:
 
   mail:
     image: tvial/docker-mailserver:latest
-    hostname: mail
+    hostname: smtp.kujon.mobi
     domainname: kujon.mobi
     container_name: mail
     ports:
@@ -16,6 +16,7 @@ services:
     - maildata:/var/mail
     - mailstate:/var/mail-state
     - /home/postfix/config/:/tmp/docker-mailserver/
+    - ./nginx/ssl:/tmp/ssl:ro
     environment:
     - ENABLE_SPAMASSASSIN=1
     - ENABLE_CLAMAV=1
@@ -23,6 +24,9 @@ services:
     - ENABLE_POSTGREY=1
     - ONE_DIR=1
     - DMS_DEBUG=0
+    - SSL_TYPE=manual
+    - SSL_CERT_PATH=/tmp/ssl/kujon.mobi.cert.2018
+    - SSL_KEY_PATH=/tmp/ssl/kujon.mobi.key
     cap_add:
     - NET_ADMIN
     - SYS_PTRACE
@@ -30,8 +34,6 @@ services:
         replicas: 1
         placement:
           constraints: [node.hostname == d1.kujon.mobi]
-
-
 
   nginx:
     image: r.kujon.mobi/nginx:0.1

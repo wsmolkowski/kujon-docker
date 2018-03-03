@@ -34,7 +34,8 @@ services:
         replicas: 1
         placement:
           constraints: [node.hostname == d1.kujon.mobi]
-
+    restart: always
+    
   nginx:
     image: r.kujon.mobi/nginx:0.1
     ports:

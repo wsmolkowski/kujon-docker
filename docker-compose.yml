@@ -26,6 +26,12 @@ services:
     cap_add:
     - NET_ADMIN
     - SYS_PTRACE
+    deploy:
+        replicas: 1
+        placement:
+          constraints: [node.hostname == d1.kujon.mobi]
+
+
 
   nginx:
     image: r.kujon.mobi/nginx:0.1

@@ -103,9 +103,4 @@ services:
         replicas: 1
         placement:
           constraints: [node.hostname == d2.kujon.mobi]
-
-volumes:
-  maildata:
-    driver: local
-  mailstate:
-    driver: local
+          

@@ -10,10 +10,11 @@ ENV HOME /home/appuser/app
 
 WORKDIR $HOME
 
-RUN git clone -b development https://kujonmobi:BVRzgDUt6UynjMUmXgAx@bitbucket.org/kujonmobi/kujon-server.git .
+ENV CONFIG $CONFIG
 
-COPY supervisor/kujon-demo.conf /etc/supervisor/conf.d/
-COPY supervisor/kujon-prod.conf /etc/supervisor/conf.d/
+RUN git clone -b ${CONFIG} https://kujonmobi:BVRzgDUt6UynjMUmXgAx@bitbucket.org/kujonmobi/kujon-server.git .
+
+COPY supervisor/kujon-${CONFIG}.conf /etc/supervisor/conf.d/
 
 RUN pip install -r requirements.txt
 
@@ -26,8 +27,6 @@ RUN bower --allow-root install
 RUN chown -R appuser:appuser $HOME
 
 EXPOSE 8000 8002 8004 8005
-
-ENV CONFIG $CONFIG
 
 WORKDIR $HOME
 

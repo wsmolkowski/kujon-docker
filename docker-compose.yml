@@ -44,10 +44,10 @@ services:
       options:
         syslog-address: "tcp://r.kujon.mobi:514"
     depends_on:
-      - development
-      - master
+      - app-development
+      - app-master
 
-  development:
+  app-development:
     image: r.kujon.mobi/app:0.2
     environment:
       - CONFIG=development
@@ -65,7 +65,7 @@ services:
       retries: 3
       start_period: 10s
 
-  master:
+  app-master:
     image: r.kujon.mobi/app:0.2
     environment:
       - CONFIG=master

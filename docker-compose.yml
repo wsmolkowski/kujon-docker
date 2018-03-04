@@ -44,19 +44,20 @@ services:
       options:
         syslog-address: "tcp://r.kujon.mobi:514"
     depends_on:
-      - demo
-      - prod
+      - development
+      - master
 
-  demo:
+  development:
     image: r.kujon.mobi/app:0.2
     environment:
-      - CONFIG=demo
+      - CONFIG=development
     logging:
       driver: "syslog"
       options:
         syslog-address: "tcp://r.kujon.mobi:514"
     depends_on:
       - mongodb
+      - postfix
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/usosesall"]
       interval: 20s
@@ -64,16 +65,17 @@ services:
       retries: 3
       start_period: 10s
 
-  prod:
-    image: r.kujon.mobi/app:0.1
+  master:
+    image: r.kujon.mobi/app:0.2
     environment:
-      - CONFIG=prod
+      - CONFIG=master
     logging:
       driver: "syslog"
       options:
         syslog-address: "tcp://r.kujon.mobi:514"
     depends_on:
       - mongodb
+      - postfix
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/usosesall"]
       interval: 20s

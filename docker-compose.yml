@@ -44,11 +44,11 @@ services:
       options:
         syslog-address: "tcp://r.kujon.mobi:514"
     depends_on:
-      - app-development
-      - app-master
+      - app-demo
+      - app-prod
 
-  app-development:
-    image: r.kujon.mobi/app-development:0.1
+  app-demo:
+    image: r.kujon.mobi/app-demo:0.1
     logging:
       driver: "syslog"
       options:
@@ -63,8 +63,8 @@ services:
       retries: 3
       start_period: 10s
 
-  app-master:
-    image: r.kujon.mobi/app-master:0.1
+  app-prod:
+    image: r.kujon.mobi/app-prod:0.1
     logging:
       driver: "syslog"
       options:

@@ -1,10 +1,10 @@
-# how to build app image
+# how to build app images
 
-docker build --build-arg git_username=USERNAME --build-arg git_password=PASS--no-cache=true -t image:kujon-demo .
+docker build -t r.kujon.mobi/app-demo:0.1 -f demo/Dockerfile .
+docker build -t r.kujon.mobi/app-demo:0.1 -f prod/Dockerfile .
 
-# how to run image
-
-docker container run --publish 9000:9000 --publish 9002:9002 --publish 9004:9004 --publish 9005:9005 --name kujon-demo kujon/kujon-demo
+# how to run/update docker stack
+docker stack deploy --with-registry-auth -c docker-compose.yml kujon
 
 # how restore mongo
 mongorestore -d kujon-demo kujon-demo/

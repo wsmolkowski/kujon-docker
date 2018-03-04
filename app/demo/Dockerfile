@@ -10,11 +10,9 @@ ENV HOME /home/appuser/app
 
 WORKDIR $HOME
 
-ENV CONFIG $CONFIG
+RUN git clone -b development https://kujonmobi:BVRzgDUt6UynjMUmXgAx@bitbucket.org/kujonmobi/kujon-server.git .
 
-RUN git clone -b ${CONFIG} https://kujonmobi:BVRzgDUt6UynjMUmXgAx@bitbucket.org/kujonmobi/kujon-server.git .
-
-COPY supervisor/kujon-${CONFIG}.conf /etc/supervisor/conf.d/
+COPY supervisor/kujon-demo.conf /etc/supervisor/conf.d/
 
 RUN pip install -r requirements.txt
 
@@ -30,4 +28,4 @@ EXPOSE 8000 8002 8004 8005
 
 WORKDIR $HOME
 
-CMD supervisord -c /etc/supervisor/conf.d/kujon-${CONFIG}.conf
+CMD supervisord -c /etc/supervisor/conf.d/kujon-demo.conf

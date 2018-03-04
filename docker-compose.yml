@@ -48,9 +48,7 @@ services:
       - app-master
 
   app-development:
-    image: r.kujon.mobi/app:0.2
-    environment:
-      - CONFIG=development
+    image: r.kujon.mobi/app-development:0.1
     logging:
       driver: "syslog"
       options:
@@ -66,9 +64,7 @@ services:
       start_period: 10s
 
   app-master:
-    image: r.kujon.mobi/app:0.2
-    environment:
-      - CONFIG=master
+    image: r.kujon.mobi/app-master:0.1
     logging:
       driver: "syslog"
       options:

@@ -1,4 +1,4 @@
-# how to build image
+# how to build app image
 
 docker build --build-arg git_username=USERNAME --build-arg git_password=PASS--no-cache=true -t image:kujon-demo .
 

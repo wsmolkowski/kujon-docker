@@ -55,12 +55,12 @@ services:
         syslog-address: "tcp://r.kujon.mobi:514"
     depends_on:
       - mongodb
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://localhost:8000/usosesall"]
-    #   interval: 20s
-    #   timeout: 3s
-    #   retries: 3
-    #   start_period: 10s
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/usosesall?monitoring=docker_healthcheck"]
+      interval: 20s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
 
   app-prod:
     image: r.kujon.mobi/app-prod:0.1
@@ -70,12 +70,12 @@ services:
         syslog-address: "tcp://r.kujon.mobi:514"
     depends_on:
       - mongodb
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "http://localhost:8000/usosesall"]
-    #   interval: 20s
-    #   timeout: 3s
-    #   retries: 3
-    #   start_period: 10s
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/usosesall?monitoring=docker_healthcheck"]
+      interval: 20s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
 
   mongodb:
     image: mongo:3.6

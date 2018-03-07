@@ -57,5 +57,4 @@ And you should see  Experimental: true
 # Docker registry
 
 copy certs to /etc/ssl
-
 Create a password file with one entry for the user doc, with password "test":

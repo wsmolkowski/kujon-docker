@@ -82,8 +82,8 @@ services:
     volumes:
       - /home/mongodb/db:/data/db
       - /home/mongodb/configdb:/data/configdb
-    ports:
-      - 127.0.0.1:27017:27017
+    # ports:
+    #   - 127.0.0.1:27017:27017
     environment:
       - AUTH=yes
     logging:

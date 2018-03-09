@@ -31,8 +31,8 @@ services:
           constraints: [node.hostname == d1.kujon.mobi]
     logging:
       driver: "syslog"
-      options:
-        syslog-address: "tcp://r.kujon.mobi:514"
+      # options:
+      #   syslog-address: "tcp://r.kujon.mobi:514"
 
   nginx:
     image: r.kujon.mobi/nginx:0.1
@@ -41,18 +41,18 @@ services:
       - 443:443
     logging:
       driver: "syslog"
-      options:
-        syslog-address: "tcp://r.kujon.mobi:514"
+      # options:
+      #   syslog-address: "tcp://r.kujon.mobi:514"
     depends_on:
       - app-demo
       - app-prod
 
   app-demo:
-    image: r.kujon.mobi/app-demo:0.1
+    image: r.kujon.mobi/app-demo:0.2
     logging:
       driver: "syslog"
-      options:
-        syslog-address: "tcp://r.kujon.mobi:514"
+      # options:
+      #   syslog-address: "tcp://r.kujon.mobi:514"
     depends_on:
       - mongodb
     healthcheck:
@@ -66,8 +66,8 @@ services:
     image: r.kujon.mobi/app-prod:0.2
     logging:
       driver: "syslog"
-      options:
-        syslog-address: "tcp://r.kujon.mobi:514"
+      # options:
+      #   syslog-address: "tcp://r.kujon.mobi:514"
     depends_on:
       - mongodb
     healthcheck:
@@ -82,16 +82,12 @@ services:
     volumes:
       - /home/mongodb/db:/data/db
       - /home/mongodb/configdb:/data/configdb
-    # ports:
-    #   - 127.0.0.1:27017:27017
     environment:
       - AUTH=yes
-      # - MONGO_INITDB_ROOT_USERNAME=admin
-      # - MONGO_INITDB_ROOT_PASSWORD=jfh472837r61HdgFd
     logging:
       driver: "syslog"
-      options:
-        syslog-address: "tcp://r.kujon.mobi:514"
+      # options:
+      #   syslog-address: "tcp://r.kujon.mobi:514"
     deploy:
         replicas: 1
         placement:

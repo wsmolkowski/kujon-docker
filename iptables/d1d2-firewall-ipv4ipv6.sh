@@ -108,6 +108,10 @@ ${IPTABLES} -A INPUT -s 195.201.42.17,195.201.40.68,195.201.40.238 -p udp -m sta
 ${IPTABLES} -A INPUT -s 195.201.42.17,195.201.40.68,195.201.40.238 -p udp -m state --state NEW -m udp --dport 4789 -j ACCEPT
 
 
+echo " * allowing docker communication from docker cloud"
+${IPTABLES} -A INPUT -p tcp -m state --state NEW -m tcp --dport 2376 -j ACCEPT
+
+
 # DROP everything else and Log it
 ${IPTABLES} -A INPUT -j LOG
 ${IPTABLES} -A INPUT -j DROP

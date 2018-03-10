@@ -46,7 +46,7 @@ services:
           constraints: [node.hostname == d1.kujon.mobi]
 
   app-demo:
-    image: r.kujon.mobi/app-demo:0.2
+    image: r.kujon.mobi/app-demo:0.21
     logging:
       driver: "syslog"
     depends_on:
@@ -56,7 +56,7 @@ services:
           constraints: [node.hostname == d1.kujon.mobi]
 
   app-prod:
-    image: r.kujon.mobi/app-prod:0.2
+    image: r.kujon.mobi/app-prod:0.21
     logging:
       driver: "syslog"
     depends_on:

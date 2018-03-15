@@ -52,9 +52,9 @@ ${IP6TABLES} -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 #${IPTABLES} -A INPUT -s _ABUSIVE_IP_ -j DROP
 #${IPTABLES} -A INPUT -s _ABUSIVE_IP2_ -j DROP
 
-echo " * allowing ssh on port 22"
-${IPTABLES} -A INPUT -p tcp --dport 22  -m state --state NEW -j ACCEPT
-${IP6TABLES} -A INPUT -p tcp --dport 22  -m state --state NEW -j ACCEPT
+echo " * allowing ssh on port 2022"
+${IPTABLES} -A INPUT -p tcp --dport 2022  -m state --state NEW -j ACCEPT
+${IP6TABLES} -A INPUT -p tcp --dport 2022  -m state --state NEW -j ACCEPT
 
 #echo " * allowing ftp on port 21"
 #${IPTABLES} -A INPUT -p tcp --dport 21  -m state --state NEW -j ACCEPT

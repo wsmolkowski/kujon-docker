@@ -94,10 +94,11 @@ ${IPTABLES} -A INPUT -s 195.201.42.17,195.201.40.68 -p tcp -m state --state NEW 
 #${IPTABLES} -A INPUT -p tcp -m state --state NEW -m tcp --dport 995 -j ACCEPT
 #${IPTABLES} -A INPUT -p tcp -m state --state NEW -m tcp --dport 110 -j ACCEPT
 
-#echo " * allowing demo on ports 9000(api) 9002(web) 9004(event)"
-#${IPTABLES} -A INPUT -p tcp -m state --state NEW -m tcp --dport 9000 -j ACCEPT
-#${IPTABLES} -A INPUT -p tcp -m state --state NEW -m tcp --dport 9002 -j ACCEPT
-#${IPTABLES} -A INPUT -p tcp -m state --state NEW -m tcp --dport 9004 -j ACCEPT
+echo " * allowing nginx/kibana on port 81"
+${IPTABLES} -A INPUT -p tcp -m state --state NEW -m tcp --dport 81 -j ACCEPT
+
+echo " * allowing access from d1,d2 to logstash on port 5044"
+${IPTABLES} -A INPUT -s 195.201.42.17,195.201.40.68 -p tcp -m state --state NEW -m tcp --dport 5044 -j ACCEPT
 
 echo " * allowing ping responses"
 ${IPTABLES} -A INPUT -p ICMP --icmp-type 8 -j ACCEPT

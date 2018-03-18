@@ -29,41 +29,53 @@ services:
         placement:
           constraints: [node.hostname == d1.kujon.mobi]
     logging:
-      driver: "syslog"
+          driver: "json-file"
+          options:
+            max-size: "500k"
+            max-file: "100"
 
   nginx:
     image: r.kujon.mobi/nginx:0.1
     ports:
       - 80:80
       - 443:443
-    logging:
-      driver: "syslog"
     depends_on:
       - app-demo
       - app-prod
     deploy:
         placement:
           constraints: [node.hostname == d1.kujon.mobi]
+    logging:
+          driver: "json-file"
+          options:
+            max-size: "500k"
+            max-file: "100"
 
   app-demo:
     image: r.kujon.mobi/app-demo:0.21
-    logging:
-      driver: "syslog"
     depends_on:
       - mongodb
     deploy:
         placement:
           constraints: [node.hostname == d1.kujon.mobi]
+    logging:
+          driver: "json-file"
+          options:
+            max-size: "500k"
+            max-file: "100"
 
   app-prod:
     image: r.kujon.mobi/app-prod:0.21
-    logging:
-      driver: "syslog"
     depends_on:
       - mongodb
     deploy:
         placement:
           constraints: [node.hostname == d1.kujon.mobi]
+    logging:
+          driver: "json-file"
+          options:
+            max-size: "500k"
+            max-file: "100"
 
   mongodb:
     image: mongo:3.6
@@ -72,9 +84,12 @@ services:
       - /home/mongodb/configdb:/data/configdb
     environment:
       - AUTH=yes
-    logging:
-      driver: "syslog"
     deploy:
         replicas: 1
         placement:
           constraints: [node.hostname == d2.kujon.mobi]
+    logging:
+          driver: "json-file"
+          options:
+            max-size: "500k"
+            max-file: "100"

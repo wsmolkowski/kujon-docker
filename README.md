@@ -1,6 +1,6 @@
 # how to build app images
 
-docker build -t r.kujon.mobi/app-demo:0.1 -f demo/Dockerfile --squash .
+docker build -t r.kujon.mobi/app-demo:0.22 -f demo/Dockerfile --squash .
 docker build -t r.kujon.mobi/app-demo:0.1 -f prod/Dockerfile  --squash .
 
 # how to run/update docker stack

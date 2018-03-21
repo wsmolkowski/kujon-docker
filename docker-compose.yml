@@ -52,7 +52,7 @@ services:
             max-file: "100"
 
   app-demo:
-    image: r.kujon.mobi/app-demo:0.21
+    image: r.kujon.mobi/app-demo:0.22
     depends_on:
       - mongodb
     deploy:

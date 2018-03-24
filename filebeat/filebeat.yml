@@ -1,0 +1,21 @@
+filebeat:
+  prospectors:
+    - type: log
+      paths:
+        - /var/lib/docker/containers/*/*.log
+      json.keys_under_root: true
+      json.message_key: log
+      json.add_error_key: true
+      processors:
+        - add_docker_metadata: ~
+      multiline.pattern: '^DEBUG:|^INFO:|^WARNING:|^ERROR:'
+      multiline.negate: true
+      multiline.match: after
+
+    # Each - is a prospector. Below are the prospector specific configurations
+    - type: log
+      paths:
+        - /var/log/*.log
+        - /var/log/syslog
+      input_type: log
+      document_type: syslog

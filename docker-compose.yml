@@ -35,7 +35,7 @@ services:
             max-file: "100"
 
   nginx:
-    image: r.kujon.mobi/nginx:0.1
+    image: r.kujon.mobi/nginx:0.2
     ports:
       - 80:80
       - 443:443

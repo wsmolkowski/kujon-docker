@@ -2,6 +2,7 @@
 
 docker build -t r.kujon.mobi/app-demo:0.22 -f demo/Dockerfile --squash .
 docker build -t r.kujon.mobi/app-demo:0.1 -f prod/Dockerfile  --squash .
+docker build -t r.kujon.mobi/nginx:0.2 --squash --no-cache .
 
 # how to run/update docker stack
 docker stack deploy --with-registry-auth -c docker-compose.yml kujon

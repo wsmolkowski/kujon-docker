@@ -23,7 +23,7 @@ services:
     - ONE_DIR=1
     - DMS_DEBUG=0
     - SSL_TYPE=manual
-    - SSL_CERT_PATH=/tmp/ssl/kujon.mobi.cert.2018
+    - SSL_CERT_PATH=/tmp/ssl/kujon.mobi.cert.2018.03.23
     - SSL_KEY_PATH=/tmp/ssl/kujon.mobi.key
     deploy:
         placement:

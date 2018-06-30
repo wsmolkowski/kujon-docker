@@ -65,7 +65,7 @@ services:
             max-file: "100"
 
   app-prod:
-    image: r.kujon.mobi/app-prod:0.24
+    image: r.kujon.mobi/app-prod:0.25
     depends_on:
       - mongodb
     deploy:

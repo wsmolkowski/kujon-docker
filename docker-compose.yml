@@ -78,7 +78,9 @@ services:
             max-file: "100"
 
   mongodb:
-    image: mongo:3.6
+    image: mongo:latest
+    #ports:
+    #  - "5555:27017"
     volumes:
       - /home/mongodb/db:/data/db
       - /home/mongodb/configdb:/data/configdb

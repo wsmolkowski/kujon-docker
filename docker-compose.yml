@@ -35,7 +35,7 @@ services:
             max-file: "100"
 
   nginx:
-    image: r.kujon.mobi/nginx:0.2
+    image: r.kujon.mobi/nginx:0.3
     ports:
       - 80:80
       - 443:443
@@ -65,7 +65,7 @@ services:
             max-file: "100"
 
   app-prod:
-    image: r.kujon.mobi/app-prod:0.25
+    image: r.kujon.mobi/app-prod:0.22
     depends_on:
       - mongodb
     deploy:

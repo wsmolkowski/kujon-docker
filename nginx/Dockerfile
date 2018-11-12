@@ -1,4 +1,4 @@
-FROM nginx:1.13.10
+FROM nginx:latest
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY ssl/kujon.mobi.withintermediate20180323.crt /etc/ssl/
 COPY ssl/kujon.mobi.key /etc/ssl/
